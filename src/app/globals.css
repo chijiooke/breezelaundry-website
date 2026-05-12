@@ -1,26 +1,73 @@
+/* src/app/globals.css */
+
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
+
+/* ── Tailwind v4 ── */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Custom theme tokens → utility classes ── */
+@theme {
+  /* Fonts */
+  --font-sora: "Sora", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  /* Brand colours */
+  --color-primary:    #4B93D1;
+  --color-primary-hover: #4388C5;
+  --color-primary-subtle: #EAF4FC;
+  --color-navy:       #0F172A;
+  --color-bg:         #F6F8FB;
+  --color-surface:    #FFFFFF;
+  --color-muted:      #F8FAFC;
+
+  /* Semantic */
+  --color-success:    #22C55E;
+  --color-warning:    #F59E0B;
+  --color-danger:     #EF4444;
+  --color-info:       #3B82F6;
+
+  /* Neutral scale */
+  --color-neutral-900: #0F172A;
+  --color-neutral-800: #1E293B;
+  --color-neutral-700: #334155;
+  --color-neutral-600: #475569;
+  --color-neutral-500: #64748B;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-50:  #F8FAFC;
+
+  /* Shadows */
+  --shadow-card:   0px 1px 2px rgba(15,23,42,0.04), 0px 4px 12px rgba(15,23,42,0.06);
+  --shadow-modal:  0px 20px 60px rgba(15,23,42,0.08);
+  --shadow-button: 0px 6px 20px rgba(75,147,209,0.22);
+
+  /* Easing */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ── Base ── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-navy);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Utilities ── */
+@layer utilities {
+  .animation-delay-80  { animation-delay: 0.08s; }
+  .animation-delay-160 { animation-delay: 0.16s; }
+  .animation-delay-240 { animation-delay: 0.24s; }
+  .animation-delay-320 { animation-delay: 0.32s; }
+  .animation-delay-400 { animation-delay: 0.40s; }
 }
