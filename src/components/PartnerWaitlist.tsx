@@ -536,7 +536,7 @@ export default function PartnerWaitlist() {
               {/* WhatsApp */}
               <div>
                 <label className="mb-1.5 block text-[13px] font-medium text-[#0F172A]">
-                  Phone number (prefferably WhatsApp)
+                  Phone number (Preferably WhatsApp)
                 </label>
                 <div
                   className={clsx(
