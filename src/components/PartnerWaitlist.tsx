@@ -222,7 +222,7 @@ export default function PartnerWaitlist() {
           /^[0-9]{10,11}$/,
           "Enter a valid Nigerian number (10–11 digits)"
         )
-        .required("WhatsApp number is required"),
+        .required("WhatsApp/Phone Number number is required "),
     }),
     onSubmit: async (values, { setSubmitting }) => {
       try {
@@ -536,7 +536,7 @@ export default function PartnerWaitlist() {
               {/* WhatsApp */}
               <div>
                 <label className="mb-1.5 block text-[13px] font-medium text-[#0F172A]">
-                  WhatsApp number
+                  Phone number (prefferably WhatsApp)
                 </label>
                 <div
                   className={clsx(
