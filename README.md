@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# breezelaundry — website
 
-## Getting Started
+The marketing and partner-onboarding website for [breezelaundry](https://breezelaundry.ng) — an invisible operating system for clothing care, currently serving Lagos and Abuja.
 
-First, run the development server:
+---
+
+## Tech stack
+
+| Layer | Tool |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Styling | Tailwind CSS v4 |
+| Forms | Formik + Yup |
+| Icons | @iconify/react — Lucide set (`lucide:*`) |
+| Database | Notion (via `@notionhq/client`) |
+| Language | TypeScript |
+
+---
+
+## Getting started
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure environment variables
+
+Create a `.env.local` file in the project root:
+
+```env
+NOTION_TOKEN=secret_...
+NOTION_DATABASE_ID=...
+```
+
+| Variable | Where to get it |
+|---|---|
+| `NOTION_TOKEN` | Notion → Settings → Integrations → New integration |
+| `NOTION_DATABASE_ID` | The ID in the URL of your Notion database page |
+
+The Notion database must have these properties:
+
+| Property | Type |
+|---|---|
+| Shop Name | Title |
+| City | Select |
+| Address | Rich Text |
+| Staff Count | Number |
+| Equipment | Multi-select |
+| WhatsApp | Phone number |
+| Submitted At | Date |
+
+### 3. Run the dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── api/
+│   │   └── partner/route.ts   # POST — writes partner submission to Notion
+│   ├── page.tsx               # Partner waitlist page (/ route)
+│   ├── layout.tsx             # Root layout
+│   └── globals.css
+└── components/
+    └── PartnerWaitlist.tsx    # Partner onboarding form
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build |
+| `npm run lint` | Run ESLint |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy on [Vercel](https://vercel.com). Set `NOTION_TOKEN` and `NOTION_DATABASE_ID` under Project → Settings → Environment Variables.
